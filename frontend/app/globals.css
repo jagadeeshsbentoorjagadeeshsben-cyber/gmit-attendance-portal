@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: 214 33% 98%;
+  --surface: 0 0% 100%;
+  --surface-2: 216 33% 96%;
+  --border: 219 30% 91%;
+  --ink: 222 43% 11%;
+  --muted: 222 13% 46%;
+  --brand: 224 100% 57%;
+  --ring: 224 100% 57%;
+}
+
+.dark {
+  --bg: 219 60% 6%;
+  --surface: 222 55% 9%;
+  --surface-2: 221 52% 12%;
+  --border: 222 40% 18%;
+  --ink: 219 45% 94%;
+  --muted: 221 18% 64%;
+  --brand: 224 100% 62%;
+  --ring: 190 100% 65%;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: hsl(var(--bg));
+  color: hsl(var(--ink));
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11", "ss01";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Elegant focus states */
+:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+::selection {
+  background: hsl(var(--brand) / 0.18);
+}
+
+/* Tabular numerals for attendance figures */
+.tnum {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+/* Subtle scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 999px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+
+/* Ambient hero glow used on login / welcome */
+.ambient-glow {
+  background:
+    radial-gradient(60% 50% at 50% 0%, rgba(36, 91, 255, 0.20), transparent 70%),
+    radial-gradient(40% 40% at 80% 20%, rgba(77, 235, 255, 0.12), transparent 70%),
+    radial-gradient(50% 40% at 15% 30%, rgba(124, 92, 255, 0.10), transparent 70%);
+}
+
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    hsl(var(--surface-2) / 0.9),
+    transparent
+  );
+  animation: shimmer 1.6s infinite;
+}
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .shimmer::after {
+    animation: none;
+  }
+}
