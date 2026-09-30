@@ -19,7 +19,7 @@ export function LecturerAuth() {
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
-    if (!section || !courseCode.trim()) { setError("Select a section and enter your subject code."); return; }
+    if (!section || !courseCode.trim()) { setError("Select a section and enter your password."); return; }
     setLoading(true);
     try {
       const res = await fetch("/gs/faculty/authorize", {
@@ -56,9 +56,9 @@ export function LecturerAuth() {
           ))}
         </div>
 
-        <label className="mb-2 mt-5 block text-xs font-bold uppercase tracking-wide text-slate-500">Subject Code</label>
-        <input data-testid="lec-course-input" value={courseCode} onChange={(e) => setCourseCode(e.target.value.toUpperCase())}
-          placeholder="BCS501" autoCapitalize="characters" spellCheck={false}
+        <label className="mb-2 mt-5 block text-xs font-bold uppercase tracking-wide text-slate-500">Password</label>
+        <input data-testid="lec-course-input" type="password" value={courseCode} onChange={(e) => setCourseCode(e.target.value.toUpperCase())}
+          placeholder="Enter password" autoCapitalize="characters" autoComplete="current-password" spellCheck={false}
           className="h-12 w-full rounded-xl border border-white/60 bg-white/60 px-4 font-semibold tracking-wide outline-none focus:border-indigo-600 dark:bg-white/5" />
 
         {error && (
