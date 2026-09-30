@@ -140,6 +140,12 @@ export function LoginScreen() {
             )}
           </Button>
         </form>
+
+        <div className="mt-6 flex items-center justify-center gap-4 text-xs font-medium text-muted">
+          <a href="/lecturer" className="hover:text-royal transition-colors" data-testid="link-lecturer">Lecturer portal</a>
+          <span className="text-border">•</span>
+          <a href="/hod" className="hover:text-royal transition-colors" data-testid="link-hod">HOD portal</a>
+        </div>
       </div>
     </main>
   );

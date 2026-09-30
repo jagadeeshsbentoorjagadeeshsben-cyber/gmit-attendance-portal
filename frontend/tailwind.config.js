@@ -28,6 +28,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        jakarta: ["var(--font-jakarta)", "var(--font-inter)", "sans-serif"],
       },
       borderRadius: {
         lg: "16px",
@@ -46,10 +47,16 @@ module.exports = {
           "0%": { opacity: "0", transform: "translateY(8px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
+        gradientShift: {
+          "0%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+          "100%": { backgroundPosition: "0% 50%" },
+        },
       },
       animation: {
         shimmer: "shimmer 1.6s infinite",
         "fade-up": "fade-up 0.4s ease-out both",
+        gradient: "gradientShift 20s ease infinite",
       },
     },
   },

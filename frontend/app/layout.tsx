@@ -1,11 +1,17 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  display: "swap",
+});
+
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-jakarta",
   display: "swap",
 });
 
@@ -45,7 +51,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.variable} suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable} ${jakarta.variable}`} suppressHydrationWarning>
       <body className="min-h-screen font-sans antialiased">
         <ThemeProvider>{children}</ThemeProvider>
       </body>
