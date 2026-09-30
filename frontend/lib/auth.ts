@@ -33,7 +33,10 @@ export function verifyToken(token: string | undefined): SessionData | null {
   const expected = sign(payload);
   if (
     sig.length !== expected.length ||
-    !crypto.timingSafeEqual(Buffer.from(sig), Buffer.from(expected))
+    !crypto.timingSafeEqual(
+      new Uint8Array(Buffer.from(sig)),
+      new Uint8Array(Buffer.from(expected))
+    )
   ) {
     return null;
   }

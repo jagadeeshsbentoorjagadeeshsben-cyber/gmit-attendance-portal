@@ -27,7 +27,7 @@ function verify<T>(t: string | undefined): T | null {
   const [p, s] = t.split(".");
   if (!p || !s) return null;
   const exp = sign(p);
-  if (s.length !== exp.length || !crypto.timingSafeEqual(Buffer.from(s), Buffer.from(exp))) return null;
+  if (s.length !== exp.length || !crypto.timingSafeEqual(new Uint8Array(Buffer.from(s)), new Uint8Array(Buffer.from(exp)))) return null;
   try {
     return JSON.parse(Buffer.from(p.replace(/-/g, "+").replace(/_/g, "/"), "base64").toString("utf8")) as T;
   } catch { return null; }

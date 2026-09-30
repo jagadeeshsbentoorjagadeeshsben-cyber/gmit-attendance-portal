@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: gmit-smart-attendance
+    runtime: node
+    rootDir: frontend
+    buildCommand: yarn install && yarn build
+    startCommand: yarn start:prod
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      - key: GOOGLE_ATTENDANCE_API_URL
+        sync: false
+      - key: MONGO_URL
+        sync: false
+      - key: DB_NAME
+        value: gmit_attendance
+      - key: SESSION_SECRET
+        sync: false
+      - key: ALLOWED_SECTIONS
+        value: 3A,3B,5A,5B,7A,7B
+      - key: ATTENDANCE_CACHE_TTL_MS
+        value: "60000"
+      - key: HOD_PASSCODE
+        sync: false
